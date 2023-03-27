@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Jumbotron, Container, Col, Form, Button, Card, ListGroup, CardGroup } from 'react-bootstrap';
+import { Jumbotron, Container, Col, Form, Button, Card, ListGroup, CardGroup, Modal } from 'react-bootstrap';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const [SearchedRecipe, setSearchRecipe] = useState([]);
     const [searchedInput, setSearchInput] = useState('');
 
@@ -29,8 +29,8 @@ const SearchBar = () => {
                 image: recipe.image,
                 summary: recipe.summary,
                 dishTypes: recipe.dishTypes,
-                preparationMinutes: recipe.preparationMinutes,
-                servings: recipe.servings
+                servings: recipe.servings,
+                analyzedInstructions: recipe.analyzedInstructions
             }))
 
             setSearchRecipe(recipeData)
@@ -39,6 +39,27 @@ const SearchBar = () => {
         } catch (err) {
             console.error(err);
         }
+    }
+
+    //handles detail model
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const [recipe, setRecipe] = useState([])
+    const [recipeSteps, setRecipeSteps] = useState([])
+
+    const showRecipeSteps = (recipe) => {
+        console.log(recipe)
+        const postRecipe = recipe
+        console.log(postRecipe)
+        const postRecipeSteps = recipe.analyzedInstructions;
+        console.log(postRecipeSteps)
+
+        setRecipe(postRecipe)
+        setRecipeSteps(postRecipeSteps)
+
+        handleShow()
     }
 
     return (
@@ -83,13 +104,37 @@ const SearchBar = () => {
                             </Card.Body>
                             <ListGroup className="list-group-flush">
                                 <ListGroup.Item>Dish type- {recipe.dishTypes}</ListGroup.Item>
-                                <ListGroup.Item>preperation Time- {recipe.preparationMinutes} minutes</ListGroup.Item>
                                 <ListGroup.Item>servings- {recipe.servings}</ListGroup.Item>
                             </ListGroup>
+                            <Button className='btn-2' type='submit' variant="success" size='lg' onClick={() => showRecipeSteps(recipe)}>
+                                Crafting Instructions
+                            </Button>
                         </Card>
                     ))}
                 </CardGroup>
             </Container>
+            <Modal
+                show={show} onHide={handleClose}
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        {recipe.title}
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h4>Steps</h4>
+                        {recipeSteps.map((steps) => (
+                            <li key={recipeSteps.steps}>{recipeSteps.steps}</li>
+                        ))}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={handleClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }
