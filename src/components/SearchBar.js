@@ -53,7 +53,7 @@ const SearchBar = (props) => {
         console.log(recipe)
         const postRecipe = recipe
         console.log(postRecipe)
-        const postRecipeSteps = recipe.analyzedInstructions;
+        const postRecipeSteps = postRecipe.analyzedInstructions[0].steps;
         console.log(postRecipeSteps)
 
         setRecipe(postRecipe)
@@ -127,8 +127,8 @@ const SearchBar = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <h4>Steps</h4>
-                        {recipeSteps.map((steps) => (
-                            <li key={recipeSteps.steps}>{recipeSteps.steps}</li>
+                        {recipeSteps.map((recipeSteps) => (
+                            <li key={recipeSteps.step}>{recipeSteps.step}</li>
                         ))}
                 </Modal.Body>
                 <Modal.Footer>
