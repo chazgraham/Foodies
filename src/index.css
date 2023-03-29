@@ -17,4 +17,15 @@ header {
   margin: 10px;
 }
 
+.modal-header {
+  background-color: darkcyan;
+}
+
+h4 {
+  background-color: darkcyan;
+  text-align: center;
+  padding: 10px;
+  border-radius: 2%;
+}
+
 
