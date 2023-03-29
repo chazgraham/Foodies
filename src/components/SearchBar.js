@@ -126,9 +126,13 @@ const SearchBar = (props) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <h4>
+                        Summary
+                    </h4>
+                    <div>{recipe.summary}</div>
                     <h4>Steps</h4>
                         {recipeSteps.map((recipeSteps) => (
-                            <li key={recipeSteps.step}>{recipeSteps.step}</li>
+                            <li type="1" key={recipeSteps.step}>{recipeSteps.step}</li>
                         ))}
                 </Modal.Body>
                 <Modal.Footer>
