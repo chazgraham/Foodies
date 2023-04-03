@@ -5,7 +5,7 @@ const Header = () => {
         <>
             <header>
                 <h1 className="header">
-                    Foodies
+                    Foodies<span>Recipe Database</span>
                 </h1>
             </header>
         </>

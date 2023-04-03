@@ -11,10 +11,42 @@ body {
   background-color: transparent;
 }
 
-header {
-  text-align: center;
-  font-size: 5rem;
-  margin: 10px;
+header h1 {
+  padding: 15px 0px 10px 0px;
+  margin-top: 100px;
+  text-align:center; 
+  font-size:50px; 
+  text-transform:uppercase; 
+  color:#222; 
+  letter-spacing:1px;
+  font-family:"Playfair Display", serif; 
+  font-weight:500;
+  background-color: rgba(136, 134, 134, 0.6);
+}
+header h1 span {
+  margin-top: 5px;
+    font-size:15px; 
+    color:#444; 
+    word-spacing:1px; 
+    font-weight:normal; 
+    letter-spacing:2px;
+    text-transform: uppercase; 
+    font-family:"Raleway", sans-serif; 
+    font-weight:500;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+header h1 span:after,header h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    background-color: transparent;
 }
 
 .modal-header {
@@ -27,5 +59,3 @@ h4 {
   padding: 10px;
   border-radius: 2%;
 }
-
-
