@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Jumbotron, Container, Col, Form, Button, Card, ListGroup, CardGroup, Modal } from 'react-bootstrap';
+import { Jumbotron, Container, Col, Form, Button, Card, ListGroup, CardGroup, Modal, Row } from 'react-bootstrap';
 
 const SearchBar = (props) => {
     const [SearchedRecipe, setSearchRecipe] = useState([]);
@@ -13,7 +13,7 @@ const SearchBar = (props) => {
         }
 
         try {
-            const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=f45007eefd874c71bd0a103aa764db2d&query=${searchedInput}&number=5&addRecipeInformation=true`)
+            const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=f45007eefd874c71bd0a103aa764db2d&query=${searchedInput}&number=25&addRecipeInformation=true`)
             console.log(response)
 
             if (!response.ok) {
@@ -94,7 +94,8 @@ const SearchBar = (props) => {
                         ? `Viewing ${SearchedRecipe.length} results:`
                         : ''}
                 </h2>
-                <CardGroup>
+                <CardGroup lg={8}>
+                <Row lg={'auto'} className="g-4">
                     {SearchedRecipe.map((recipe) => (
                         <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={recipe.image} alt={`${recipe.title}`} />
@@ -111,6 +112,7 @@ const SearchBar = (props) => {
                             </Button>
                         </Card>
                     ))}
+                    </Row>
                 </CardGroup>
             </Container>
             <Modal
