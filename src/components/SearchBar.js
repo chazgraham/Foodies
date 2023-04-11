@@ -75,7 +75,7 @@ const SearchBar = (props) => {
                                     onChange={(e) => setSearchInput(e.target.value)}
                                     type='text'
                                     size='lg'
-                                    placeholder='Search for a game'
+                                    placeholder='Search for a recipe'
                                 />
                             </Col>
                             <Col xs={12} md={4}>
