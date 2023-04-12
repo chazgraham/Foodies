@@ -13,7 +13,7 @@ const SearchBar = (props) => {
         }
 
         try {
-            const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=f45007eefd874c71bd0a103aa764db2d&query=${searchedInput}&number=25&addRecipeInformation=true`)
+            const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=f45007eefd874c71bd0a103aa764db2d&query=${searchedInput}&number=20&addRecipeInformation=true`)
             console.log(response)
 
             if (!response.ok) {
