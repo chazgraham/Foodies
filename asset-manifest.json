@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/foodies/static/css/main.ac8c8bf8.chunk.css",
+    "main.js": "/foodies/static/js/main.1e52878f.chunk.js",
+    "main.js.map": "/foodies/static/js/main.1e52878f.chunk.js.map",
+    "runtime-main.js": "/foodies/static/js/runtime-main.1fa11d9a.js",
+    "runtime-main.js.map": "/foodies/static/js/runtime-main.1fa11d9a.js.map",
+    "static/css/2.c4e73993.chunk.css": "/foodies/static/css/2.c4e73993.chunk.css",
+    "static/js/2.cadd8be8.chunk.js": "/foodies/static/js/2.cadd8be8.chunk.js",
+    "static/js/2.cadd8be8.chunk.js.map": "/foodies/static/js/2.cadd8be8.chunk.js.map",
+    "index.html": "/foodies/index.html",
+    "static/css/2.c4e73993.chunk.css.map": "/foodies/static/css/2.c4e73993.chunk.css.map",
+    "static/css/main.ac8c8bf8.chunk.css.map": "/foodies/static/css/main.ac8c8bf8.chunk.css.map",
+    "static/js/2.cadd8be8.chunk.js.LICENSE.txt": "/foodies/static/js/2.cadd8be8.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/foodies/static/media/foodie-background.86504e98.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1fa11d9a.js",
+    "static/css/2.c4e73993.chunk.css",
+    "static/js/2.cadd8be8.chunk.js",
+    "static/css/main.ac8c8bf8.chunk.css",
+    "static/js/main.1e52878f.chunk.js"
+  ]
+}
