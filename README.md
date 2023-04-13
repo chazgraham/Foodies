@@ -5,7 +5,7 @@
 
 ## Descripton
 An application that allows the user to search for food recipes using the third party spoonacular API. The application will have a short summary as well as steps to complete the recipe.
-Link to deployed application can be found here http://chazgraham.github.io/foodies
+Link to deployed application can be found here http://chazgraham.github.io/Foodies
 ![](./src/assets/foodies1.jpg)
 ![](./src/assets/foodies2.jpg)
 
