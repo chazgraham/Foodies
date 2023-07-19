@@ -44,6 +44,8 @@ header h1 span {
     grid-template-rows: 27px 0;
     grid-gap: 20px;
     align-items: center;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 header h1 span:after,header h1 span:before {
@@ -53,6 +55,12 @@ header h1 span:after,header h1 span:before {
     border-top: 1px solid #ccc;
     height: 5px;
     background-color: transparent;
+}
+
+.text-light {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .modal-header {
@@ -105,10 +113,6 @@ a:hover {
 }
 
 @media only screen and (max-width: 995px) {
-  .btn-2 {
-    margin-top: 10px;
-  }
-
   .container, .container-md, .container-sm {
     width: 100%;
     padding-right: 15px;
@@ -118,8 +122,20 @@ a:hover {
 }
 }
 
+@media only screen and (max-width:767px) {
+  .btn-2 {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 415px) {
+  span {
+    text-decoration: underline;
+  }
+}
+
 @media (min-width: 375px) {
   .row {
       margin-left: 15px;
   }
-  }
+}

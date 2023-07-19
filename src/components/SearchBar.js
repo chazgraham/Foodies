@@ -78,7 +78,7 @@ const SearchBar = (props) => {
                                     placeholder='Search for a recipe'
                                 />
                             </Col>
-                            <Col xs={12} md={4}>
+                            <Col xs={12} md={3}>
                                 <Button className='btn-2' type='submit' variant="success" size='lg'>
                                     Submit Search
                                 </Button>
