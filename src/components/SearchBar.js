@@ -105,7 +105,7 @@ const SearchBar = (props) => {
                             </Card.Body>
                             <ListGroup className="list-group-flush">
                                 <ListGroup.Item>Dish type- {recipe.dishTypes}</ListGroup.Item>
-                                <ListGroup.Item>servings- {recipe.servings}</ListGroup.Item>
+                                <ListGroup.Item>{recipe.servings} servings</ListGroup.Item>
                             </ListGroup>
                             <Button className='btn-2' type='submit' variant="success" size='lg' onClick={() => showRecipeSteps(recipe)}>
                                 Crafting Instructions
