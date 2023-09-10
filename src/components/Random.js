@@ -51,7 +51,7 @@ const RandomRecipes = (props) => {
         console.log(postRecipe)
         const postRecipeSteps = postRecipe.analyzedInstructions[0].steps;
         const postRecipeIngredients = postRecipe.ingredients
-        console.log(postRecipeSteps)
+        console.log(postRecipeIngredients[0].measures)
 
         setRecipe(postRecipe)
         setRecipeSteps(postRecipeSteps)
@@ -105,7 +105,7 @@ const RandomRecipes = (props) => {
                         Summary
                     </h4>
                     <div>{recipe.summary}</div>
-                    <Nav variant="pills" defaultActiveKey="link-1">
+                    <Nav variant="tabs" defaultActiveKey="link-1">
                         <Nav.Item>
                             <Nav.Link eventKey="link-1" onClick={() => { setInfo('steps') }}>Steps</Nav.Link>
                         </Nav.Item>
@@ -121,8 +121,8 @@ const RandomRecipes = (props) => {
                         </div>
                         :
                         <div>
-                            {recipeIngredients.map((recipeIngredients) =>(
-                                <li>{recipeIngredients.name}</li>
+                            {recipeIngredients.map((recipeIngredients) => (
+                                <li>{recipeIngredients.measures.us.amount} {recipeIngredients.measures.us.unitShort} {recipeIngredients.name}</li>
                             ))}
                         </div>
                     }
