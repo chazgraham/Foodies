@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Jumbotron, Container, Col, Form, Button, Card, ListGroup, CardGroup, Modal, Row } from 'react-bootstrap';
 
 const SearchBar = (props) => {
     const [SearchedRecipe, setSearchRecipe] = useState([]);
     const [searchedInput, setSearchInput] = useState('');
-
-    const getRandom = async (e) => {
-        const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=f45007eefd874c71bd0a103aa764db2d&&number=5&addRecipeInformation=true`)
-        const recipes = await response.json();
-        console.log(recipes)
-    }
-
-    useEffect(() => {
-        getRandom()
-    }, [])
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
