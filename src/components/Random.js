@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Button, Card, ListGroup, CardGroup, Modal, Row } from 'react-bootstrap';
+import { Container, Button, Card, ListGroup, CardGroup, Modal, Row, Nav } from 'react-bootstrap';
 
 const RandomRecipes = (props) => {
 
@@ -23,7 +23,8 @@ const RandomRecipes = (props) => {
             summary: recipe.summary,
             dishTypes: recipe.dishTypes,
             servings: recipe.servings,
-            analyzedInstructions: recipe.analyzedInstructions
+            analyzedInstructions: recipe.analyzedInstructions,
+            ingredients: recipe.extendedIngredients
         }))
 
         setRandomRecipes(recipeData);
@@ -40,16 +41,21 @@ const RandomRecipes = (props) => {
 
     const [recipe, setRecipe] = useState([])
     const [recipeSteps, setRecipeSteps] = useState([])
+    const [recipeIngredients, setRecipeIngredients] = useState([])
+    const [info, setInfo] = useState('steps')
+    console.log(info)
 
     const showRecipeSteps = (recipe) => {
         console.log(recipe)
         const postRecipe = recipe
         console.log(postRecipe)
         const postRecipeSteps = postRecipe.analyzedInstructions[0].steps;
+        const postRecipeIngredients = postRecipe.ingredients
         console.log(postRecipeSteps)
 
         setRecipe(postRecipe)
         setRecipeSteps(postRecipeSteps)
+        setRecipeIngredients(postRecipeIngredients)
 
         handleShow()
     }
@@ -99,10 +105,27 @@ const RandomRecipes = (props) => {
                         Summary
                     </h4>
                     <div>{recipe.summary}</div>
-                    <h4>Steps</h4>
-                        {recipeSteps.map((recipeSteps) => (
-                            <li type="1" key={recipeSteps.step}>{recipeSteps.step}</li>
-                        ))}
+                    <Nav variant="pills" defaultActiveKey="link-1">
+                        <Nav.Item>
+                            <Nav.Link eventKey="link-1" onClick={() => { setInfo('steps') }}>Steps</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link href="#disabled" onClick={() => { setInfo('ingredients') }}>Ingredients</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    {info === 'steps' ?
+                        <div>
+                            {recipeSteps.map((recipeSteps) => (
+                                <li type="1" key={recipeSteps.step}>{recipeSteps.step}</li>
+                            ))}
+                        </div>
+                        :
+                        <div>
+                            {recipeIngredients.map((recipeIngredients) =>(
+                                <li>{recipeIngredients.name}</li>
+                            ))}
+                        </div>
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={handleClose}>Close</Button>
