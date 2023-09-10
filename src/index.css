@@ -84,6 +84,10 @@ h4 {
   margin: 10px;
 }
 
+.random_btn {
+  text-align: center;
+}
+
 footer {
   position: absolute;
   bottom: 0px;

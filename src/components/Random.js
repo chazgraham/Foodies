@@ -81,6 +81,7 @@ const RandomRecipes = (props) => {
                     </Row>
                 </CardGroup>
             </Container>
+            <div className="random_btn"><Button onClick={() => getRandom()}>Randomize</Button></div>
             <Modal
                 show={show} onHide={handleClose}
                 {...props}
