@@ -13,9 +13,7 @@ const RandomRecipes = (props) => {
         }
 
         const recipes = await response.json();
-        console.log(recipes);
         const recipe = recipes.recipes;
-        console.log(recipe)
 
         const recipeData = recipe.map((recipe) => ({
             title: recipe.title,
@@ -43,15 +41,12 @@ const RandomRecipes = (props) => {
     const [recipeSteps, setRecipeSteps] = useState([])
     const [recipeIngredients, setRecipeIngredients] = useState([])
     const [info, setInfo] = useState('steps')
-    console.log(info)
+
 
     const showRecipeSteps = (recipe) => {
-        console.log(recipe)
         const postRecipe = recipe
-        console.log(postRecipe)
         const postRecipeSteps = postRecipe.analyzedInstructions[0].steps;
         const postRecipeIngredients = postRecipe.ingredients
-        console.log(postRecipeIngredients[0].measures)
 
         setRecipe(postRecipe)
         setRecipeSteps(postRecipeSteps)

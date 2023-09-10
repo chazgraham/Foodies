@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Jumbotron, Container, Col, Form, Button, Card, ListGroup, CardGroup, Modal, Row } from 'react-bootstrap';
+import { Jumbotron, Container, Col, Form, Button, Card, ListGroup, CardGroup, Modal, Row, Nav } from 'react-bootstrap';
 
 const SearchBar = (props) => {
     const [SearchedRecipe, setSearchRecipe] = useState([]);
@@ -13,7 +13,7 @@ const SearchBar = (props) => {
         }
 
         try {
-            const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=f45007eefd874c71bd0a103aa764db2d&query=${searchedInput}&number=20&addRecipeInformation=true`)
+            const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=f45007eefd874c71bd0a103aa764db2d&query=${searchedInput}&number=20&addRecipeInformation=true&includeIngredients`)
             console.log(response)
 
             if (!response.ok) {
@@ -21,8 +21,8 @@ const SearchBar = (props) => {
             }
 
             const recipes = await response.json();
-            console.log(recipes);
             const recipe = recipes.results;
+            console.log(recipe)
 
             const recipeData = recipe.map((recipe) => ({
                 title: recipe.title,
@@ -30,7 +30,8 @@ const SearchBar = (props) => {
                 summary: recipe.summary,
                 dishTypes: recipe.dishTypes,
                 servings: recipe.servings,
-                analyzedInstructions: recipe.analyzedInstructions
+                analyzedInstructions: recipe.analyzedInstructions,
+                ingredients: recipe.extendedIngredients
             }))
 
             setSearchRecipe(recipeData)
@@ -48,16 +49,19 @@ const SearchBar = (props) => {
 
     const [recipe, setRecipe] = useState([])
     const [recipeSteps, setRecipeSteps] = useState([])
+    const [recipeIngredients, setRecipeIngredients] = useState([])
+    const [info, setInfo] = useState('steps')
 
     const showRecipeSteps = (recipe) => {
-        console.log(recipe)
         const postRecipe = recipe
         console.log(postRecipe)
         const postRecipeSteps = postRecipe.analyzedInstructions[0].steps;
-        console.log(postRecipeSteps)
+        const postRecipeIngredients = postRecipe.ingredients
+        console.log(postRecipeIngredients)
 
         setRecipe(postRecipe)
         setRecipeSteps(postRecipeSteps)
+        setRecipeIngredients(postRecipeIngredients)
 
         handleShow()
     }
@@ -132,10 +136,27 @@ const SearchBar = (props) => {
                         Summary
                     </h4>
                     <div>{recipe.summary}</div>
-                    <h4>Steps</h4>
-                        {recipeSteps.map((recipeSteps) => (
-                            <li type="1" key={recipeSteps.step}>{recipeSteps.step}</li>
-                        ))}
+                    <Nav variant="tabs" defaultActiveKey="link-1">
+                        <Nav.Item>
+                            <Nav.Link eventKey="link-1" onClick={() => { setInfo('steps') }}>Steps</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link href="#disabled" onClick={() => { setInfo('ingredients') }}>Ingredients</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    {info === 'steps' ?
+                        <div>
+                            {recipeSteps.map((recipeSteps) => (
+                                <li type="1" key={recipeSteps.step}>{recipeSteps.step}</li>
+                            ))}
+                        </div>
+                        :
+                        <div>
+                            {recipeIngredients.map((recipeIngredients) => (
+                                <li>{recipeIngredients.measures.us.amount} {recipeIngredients.measures.us.unitShort} {recipeIngredients.name}</li>
+                            ))}
+                        </div>
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={handleClose}>Close</Button>
