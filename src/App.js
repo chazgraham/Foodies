@@ -10,8 +10,8 @@ function App() {
   return (
     <>
       <Header />
-      <RandomRecipes />
       <SearchBar />
+      <RandomRecipes />
       <Footer />
     </>
   );

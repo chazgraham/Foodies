@@ -6,7 +6,7 @@ const RandomRecipes = (props) => {
     const [randomRecipes, setRandomRecipes] = useState([])
 
     const getRandom = async (e) => {
-        const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=f45007eefd874c71bd0a103aa764db2d&&number=5&addRecipeInformation=true`)
+        const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=f45007eefd874c71bd0a103aa764db2d&&number=4&addRecipeInformation=true`)
 
         if (!response.ok) {
             throw new Error('something went wrong!');
@@ -57,13 +57,13 @@ const RandomRecipes = (props) => {
     return (
         <>
             <Container>
-                <h2 className='viewing'>
-                    Find something New!
+                <h2 className='random_h2'>
+                    Need some Ideas?
                 </h2>
                 <CardGroup lg={8}>
                     <Row lg={'auto'} className="g-4">
                         {randomRecipes.map((recipe) => (
-                            <Card style={{ width: '18rem' }}>
+                            <Card style={{ width: '16rem' }}>
                                 <Card.Img variant="top" src={recipe.image} alt={`${recipe.title}`} />
                                 <Card.Body>
                                     <Card.Title>{recipe.title}</Card.Title>

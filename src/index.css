@@ -57,6 +57,12 @@ header h1 span:after,header h1 span:before {
     background-color: transparent;
 }
 
+.random_h2{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  font-weight: 600;
+}
+
 .text-light {
   align-items: center;
   justify-content: center;
