@@ -14,7 +14,6 @@ const SearchBar = (props) => {
         
         try {
             const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=f45007eefd874c71bd0a103aa764db2d&query=${searchedInput}&number=20&addRecipeInformation=true&fillIngredients=true`)
-            console.log(response)
 
             if (!response.ok) {
                 throw new Error('something went wrong!');
@@ -22,7 +21,6 @@ const SearchBar = (props) => {
 
             const recipes = await response.json();
             const recipe = recipes.results;
-            console.log(recipe)
 
             const recipeData = recipe.map((recipe) => ({
                 title: recipe.title,
@@ -54,10 +52,8 @@ const SearchBar = (props) => {
 
     const showRecipeSteps = (recipe) => {
         const postRecipe = recipe
-        console.log(postRecipe)
         const postRecipeSteps = postRecipe.analyzedInstructions[0].steps;
         const postRecipeIngredients = postRecipe.ingredients
-        console.log(postRecipeIngredients)
 
         setRecipe(postRecipe)
         setRecipeSteps(postRecipeSteps)
