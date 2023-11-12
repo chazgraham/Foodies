@@ -1,7 +1,6 @@
 # Foodies
 
   [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://choosealicense.com/licenses/isc/)
-  
 
 ## Descripton
 An application that allows the user to search for food recipes using the third party spoonacular API. The application will have a short summary as well as steps to complete the recipe.
