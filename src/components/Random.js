@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button, Card, ListGroup, CardGroup, Modal, Row, Nav } from 'react-bootstrap';
+import noImg from "../assets/no_img.jpg";
 
 const RandomRecipes = (props) => {
 
@@ -65,7 +66,11 @@ const RandomRecipes = (props) => {
                     <Row lg={'auto'} className="g-4">
                         {randomRecipes.map((recipe) => (
                             <Card style={{ width: '16rem' }}>
-                                <Card.Img variant="top" src={recipe.image} alt={`${recipe.title}`} />
+                                {!recipe.image ?
+                                    <Card.Img variant="top" src={noImg} alt={`${recipe.title}`} />
+                                    :
+                                    <Card.Img variant="top" src={recipe.image} alt={`${recipe.title}`} />
+                                }
                                 <Card.Body>
                                     <Card.Title>{recipe.title}</Card.Title>
                                     <Card.Text></Card.Text>
