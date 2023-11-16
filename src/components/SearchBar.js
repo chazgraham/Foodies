@@ -4,9 +4,11 @@ import { Jumbotron, Container, Col, Form, Button, Card, ListGroup, CardGroup, Mo
 const SearchBar = (props) => {
     const [SearchedRecipe, setSearchRecipe] = useState([]);
     const [searchedInput, setSearchInput] = useState('');
+    const [viewing, setViewing] = useState('')
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        setViewing(searchedInput)
 
         if (!searchedInput) {
             return false;
@@ -91,7 +93,7 @@ const SearchBar = (props) => {
             <Container>
                 <h2 className='viewing'>
                     {SearchedRecipe.length
-                        ? `Viewing ${SearchedRecipe.length} results:`
+                        ? `${SearchedRecipe.length} results for ${viewing}:`
                         : ''}
                 </h2>
                 <CardGroup lg={8}>
